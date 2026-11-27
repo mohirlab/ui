@@ -1,0 +1,77 @@
+name: Visual tests
+
+# Every Storybook story in Chromium, Firefox and WebKit, light and dark, compared with
+# baselines committed in apps/visual/tests/__screenshots__.
+#
+# Changed something visual on purpose? Run this workflow manually on your branch with
+# "update" ticked: it regenerates the baselines on Linux and commits them to the branch.
+
+on:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      update:
+        description: Regenerate and commit the baseline screenshots
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: visual-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TURBO_TELEMETRY_DISABLED: 1
+
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # only used by the update run, to commit baselines
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm turbo run build --filter @mohirlab/storybook
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Install browsers and their system dependencies
+        run: pnpm --filter @mohirlab/visual exec playwright install --with-deps chromium firefox webkit
+
+      - name: No baselines yet
+        if: ${{ !inputs.update && hashFiles('apps/visual/tests/__screenshots__/**') == '' }}
+        run: echo "::notice::No baselines committed yet. Run this workflow on a branch with update ticked to create them."
+      - name: Compare with baselines
+        if: ${{ !inputs.update && hashFiles('apps/visual/tests/__screenshots__/**') != '' }}
+        run: pnpm --filter @mohirlab/visual test:visual
+      - name: Regenerate baselines
+        if: ${{ inputs.update }}
+        run: pnpm --filter @mohirlab/visual test:visual:update
+
+      - name: Commit baselines
+        if: ${{ inputs.update }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/visual/tests/__screenshots__
+          git diff --cached --quiet && { echo "Baselines unchanged."; exit 0; }
+          git commit -m "test: update visual baselines"
+          git push
+
+      - name: Upload the report and diffs
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-report
+          path: apps/visual/playwright-report
+          retention-days: 14
