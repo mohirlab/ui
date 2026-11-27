@@ -1,4 +1,5 @@
-import { declareLayers, vars } from '@mohirlab/themes';
+import { createVar, style } from '@vanilla-extract/css';
+import { declareLayers, inLayer, vars } from '@mohirlab/themes';
 import { compose, componentRecipe, controlSize, transition } from '@mohirlab/recipes';
 import type { RecipeVariants } from '@vanilla-extract/recipes';
 
@@ -42,7 +43,8 @@ export const input = componentRecipe({
           backgroundColor: color.surfaceSunken,
           boxShadow: 'none',
         },
-        '&:read-only:not(:disabled)': { backgroundColor: color.surfaceSunken, boxShadow: 'none' },
+        // <select> also matches :read-only in browsers; only real read-only text fields go sunken.
+        '&:read-only:not(:disabled):not(select)': { backgroundColor: color.surfaceSunken, boxShadow: 'none' },
       },
     },
     transition('border-color', 'background-color', 'box-shadow'),
@@ -58,3 +60,22 @@ export const input = componentRecipe({
 });
 
 export type InputVariants = NonNullable<RecipeVariants<typeof input>>;
+
+export const maxRows = createVar();
+
+/** Textarea on top of the input look: multi-line padding, vertical resize, optional auto-grow. */
+export const textarea = style(
+  inLayer('components', {
+    height: 'auto',
+    minHeight: '5rem',
+    paddingBlock: vars.space['2'],
+    lineHeight: vars.font.leading.normal,
+    resize: 'vertical',
+    selectors: {
+      '&[data-autogrow]': {
+        fieldSizing: 'content',
+        maxHeight: `calc(${maxRows} * 1lh + 2 * ${vars.space['2']} + 2px)`,
+      },
+    },
+  }),
+);

@@ -30,7 +30,7 @@ import {
   Field,
   Heading,
   Icon,
-  Input,
+  Textarea,
   Popover,
   Stack,
   Text,
@@ -160,7 +160,7 @@ function Compose({ open, onOpenChange }: { open: boolean; onOpenChange: (open: b
       <DialogBody>
         <Stack gap="4">
           <Field label="What are you making?">
-            <Input
+            <Textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder="A glaze test, a new loom…"

@@ -13,6 +13,8 @@ import {
   Heading,
   Icon,
   Input,
+  Select,
+  Switch,
   Stack,
   Text,
   Tooltip,
@@ -119,9 +121,24 @@ function Settings() {
           <Field label="Billing email" hint="Invoices and receipts are sent here." error={emailError}>
             <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </Field>
+          <Field label="Currency">
+            <Select defaultValue="uzs">
+              <option value="uzs">UZS · Uzbek soʻm</option>
+              <option value="usd">USD · US dollar</option>
+              <option value="eur">EUR · Euro</option>
+            </Select>
+          </Field>
           <Field label="VAT number" optional>
             <Input placeholder="UZ 000 000 000" />
           </Field>
+          <Stack gap="3">
+            <Switch
+              label="Email clients a receipt"
+              defaultChecked
+              description="Sent when an invoice is paid."
+            />
+            <Switch label="Remind overdue clients" defaultChecked />
+          </Stack>
           <Stack direction="row" justify="flex-end" gap="2">
             <Button type="submit" loading={saving} disabled={Boolean(nameError || emailError)}>
               Save changes
