@@ -12,6 +12,7 @@ const LAYERS = {
   '@mohirlab/themes': 2,
   '@mohirlab/sprinkles': 3,
   '@mohirlab/recipes': 3,
+  '@mohirlab/motion': 3,
   '@mohirlab/react': 4,
 };
 

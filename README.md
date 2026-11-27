@@ -13,17 +13,19 @@ square-capped icons and imagery generated from tilework geometry.
 | [`@mohirlab/themes`](packages/foundation/themes)    | Theme contract, light and dark themes, cascade layers      |
 | [`@mohirlab/sprinkles`](packages/styling/sprinkles) | Type-safe, token-bound responsive utilities                |
 | [`@mohirlab/recipes`](packages/styling/recipes)     | Variant recipes and conventions for your own components    |
+| [`@mohirlab/motion`](packages/styling/motion)       | Enter/exit motion presets with reduced-motion fallbacks    |
 | [`@mohirlab/react`](packages/components/react)      | React components                                           |
 
 ## Use it
 
 ```sh
-pnpm add @mohirlab/react @mohirlab/themes @mohirlab/sprinkles @mohirlab/icons @vanilla-extract/css
+pnpm add @mohirlab/react @mohirlab/themes @mohirlab/sprinkles @mohirlab/motion @mohirlab/icons @vanilla-extract/css
 ```
 
 ```tsx
 import '@mohirlab/themes/styles.css';
 import '@mohirlab/sprinkles/styles.css';
+import '@mohirlab/motion/styles.css';
 import '@mohirlab/react/styles.css';
 
 import { iconArrowRight } from '@mohirlab/icons';

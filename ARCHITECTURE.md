@@ -12,7 +12,8 @@ layer 2  @mohirlab/assets      Seeded generative artwork and avatars (uses token
          @mohirlab/themes      Theme contract, light/dark themes, cascade layers.
 layer 3  @mohirlab/sprinkles   Token-bound responsive utilities.
          @mohirlab/recipes     componentRecipe(), compose(), shared conventions (build-time).
-layer 4  @mohirlab/react       Components. Runtime: themes, sprinkles, icons, assets.
+         @mohirlab/motion      Enter/exit keyframes and data-state presets, reduced-motion fallbacks.
+layer 4  @mohirlab/react       Components. Runtime: themes, sprinkles, motion, icons, assets.
 
 apps/storybook                 The showcase: foundations, components, patterns. Deployed to Pages.
 apps/playground                A plain Vite app: proves the built packages work for a consumer.
@@ -22,8 +23,8 @@ A package may depend only on packages in a lower layer; `pnpm check:boundaries` 
 it, and pnpm itself refuses undeclared imports. Nothing below layer 4 may depend on React.
 Nothing imports from `apps/`.
 
-Not yet extracted, on purpose: `responsive` (lives in sprinkles), `motion` (tokens
-only so far), `primitives`, `cli`. Extract a package when a second consumer needs it.
+Not yet extracted, on purpose: `responsive` (lives in sprinkles),
+`primitives`, `cli`. Extract a package when a second consumer needs it.
 
 ## Toolchain decisions
 

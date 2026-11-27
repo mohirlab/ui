@@ -1,5 +1,6 @@
 import '@mohirlab/themes/styles.css';
 import '@mohirlab/sprinkles/styles.css';
+import '@mohirlab/motion/styles.css';
 import '@mohirlab/react/styles.css';
 
 import { StrictMode } from 'react';

@@ -51,8 +51,14 @@ for (const dir of packageDirs) {
   // between packages could reorder the cascade.
   const LAYER_ORDER = '@layer ml-reset;\n@layer ml-theme;\n@layer ml-components;\n@layer ml-utilities;';
   const css = join(dir, 'dist/styles.css');
-  if (existsSync(css) && !readFileSync(css, 'utf8').startsWith(LAYER_ORDER)) {
-    missing.push('dist/styles.css does not start with the ml-* layer order');
+  // (Vanilla Extract hoists @keyframes to the top; they are not layered, so only the
+  // first @layer occurrence matters.)
+  if (existsSync(css)) {
+    const text = readFileSync(css, 'utf8');
+    const firstLayer = text.indexOf('@layer');
+    if (firstLayer === -1 || !text.slice(firstLayer).startsWith(LAYER_ORDER)) {
+      missing.push('dist/styles.css does not declare the ml-* layer order before its first layered rule');
+    }
   }
 
   if (missing.length || recompilable.length) {
