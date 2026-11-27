@@ -18,8 +18,6 @@ if ! GH_TOKEN="$(gh auth token --hostname github.com --user "$OWNER" 2>/dev/null
 fi
 export GH_TOKEN
 
-# The username in the URL makes gh's git credential helper use the mohirlab token
-# for this repository only; your other repositories keep using your own account.
 REMOTE="https://$OWNER@github.com/$REPO.git"
 
 if ! gh repo view "$REPO" >/dev/null 2>&1; then
@@ -33,7 +31,10 @@ if git remote get-url origin >/dev/null 2>&1; then
 else
   git remote add origin "$REMOTE"
 fi
-git config credential.https://github.com.username "$OWNER"
+# Repository-local credential helper: always push with the mohirlab token from gh.
+git config --local --unset-all credential.https://github.com.helper 2>/dev/null || true
+git config --local --add credential.https://github.com.helper ""
+git config --local --add credential.https://github.com.helper "!f() { test \"$1\" = get || exit 0; echo username=$OWNER; echo \"password=$(gh auth token --hostname github.com --user $OWNER)\"; }; f"
 git push -u origin main
 
 gh repo edit "$REPO" \
