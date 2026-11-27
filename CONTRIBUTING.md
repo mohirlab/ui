@@ -31,6 +31,9 @@ around either: open an issue instead.
    with _update_ ticked: it regenerates the baselines on Linux, checks that they reproduce and
    commits them. Look at every changed image in the pull request before merging. Never commit
    screenshots made on your own machine, because fonts and rendering differ.
+   Changes to focus, keyboard handling, overlays or the mobile layout also need the parts of
+   [docs/manual-checks.md](docs/manual-checks.md) they touch, with a real screen reader and
+   phone: automated tests cannot hear or hold a device.
 6. Open a pull request that says `Closes #<issue>`.
 
 Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/):
