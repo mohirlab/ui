@@ -20,15 +20,26 @@ const stories = Object.values(index.entries).filter(
 
 async function open(page: Page, id: string, theme: 'light' | 'dark') {
   await page.goto(`/iframe.html?id=${id}&viewMode=story&globals=theme:${theme}`);
-  await page.locator('#storybook-root').waitFor();
+  // 'attached', not 'visible': stories whose content is all position:fixed leave the root 0×0.
+  await page.locator('#storybook-root').waitFor({ state: 'attached' });
   // Web fonts and generated images must be in before the shot.
   await page.evaluate(() => document.fonts.ready);
   await page.waitForLoadState('networkidle');
 }
 
+/** Known browser problems, each with a tracking issue. */
+const knownIssues: Record<string, { browser: string; issue: string }> = {
+  'components-popover-tooltip--open-popover-flipped': {
+    browser: 'firefox',
+    issue: 'https://github.com/mohirlab/ui/issues/31',
+  },
+};
+
 for (const story of stories) {
   for (const theme of ['light', 'dark'] as const) {
-    test(`${story.title} › ${story.name} (${theme})`, async ({ page }) => {
+    test(`${story.title} › ${story.name} (${theme})`, async ({ page, browserName }) => {
+      const known = knownIssues[story.id];
+      test.skip(known?.browser === browserName, `Page crash, see ${known?.issue}`);
       await open(page, story.id, theme);
       await expect(page).toHaveScreenshot(`${story.id}--${theme}.png`, { fullPage: true });
     });
