@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { paletteInk, paletteNames, palettes } from '../src/index';
 
+const clamp = (v: number) => Math.min(1, Math.max(0, v));
+
 // OKLCH → linear sRGB (Björn Ottosson's reference matrices), then WCAG 2 contrast.
 function oklchToLinearRgb(css: string): [number, number, number] {
   const m = css.match(/oklch\(([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
@@ -11,7 +13,6 @@ function oklchToLinearRgb(css: string): [number, number, number] {
   const l = (L + 0.3963377774 * a + 0.2158037573 * b) ** 3;
   const mm = (L - 0.1055613458 * a - 0.0638541728 * b) ** 3;
   const s = (L - 0.0894841775 * a - 1.291485548 * b) ** 3;
-  const clamp = (v: number) => Math.min(1, Math.max(0, v));
   return [
     clamp(4.0767416621 * l - 3.3077115913 * mm + 0.2309699292 * s),
     clamp(-1.2684380046 * l + 2.6097574011 * mm - 0.3413193965 * s),
@@ -20,7 +21,7 @@ function oklchToLinearRgb(css: string): [number, number, number] {
 }
 const luminance = ([r, g, b]: [number, number, number]) => 0.2126 * r + 0.7152 * g + 0.0722 * b;
 const contrast = (x: [number, number, number], y: [number, number, number]) => {
-  const [hi, lo] = [luminance(x), luminance(y)].sort((p, q) => q - p) as [number, number];
+  const [hi, lo] = [luminance(x), luminance(y)].toSorted((p, q) => q - p) as [number, number];
   return (hi + 0.05) / (lo + 0.05);
 };
 // The star texture is painted at 55% over the tile.
