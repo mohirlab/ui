@@ -1,7 +1,8 @@
 import type { ComponentPropsWithRef } from 'react';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { cx } from '../../utils/cx';
-import { useField } from '../field/field-context';
-import { input, type InputVariants } from './input.css';
+import { useFieldControl } from '../field/use-field-control';
+import { input, maxRows as maxRowsVar, textarea, type InputVariants } from './input.css';
 
 export interface InputProps extends Omit<ComponentPropsWithRef<'input'>, 'size'> {
   size?: InputVariants['size'];
@@ -10,19 +11,55 @@ export interface InputProps extends Omit<ComponentPropsWithRef<'input'>, 'size'>
 }
 
 export function Input({ size, invalid, className, id, required, disabled, ...rest }: InputProps) {
-  const field = useField();
-  const describedBy = [field?.describedBy, rest['aria-describedby']].filter(Boolean).join(' ') || undefined;
-  const isInvalid = invalid ?? field?.invalid ?? false;
+  const control = useFieldControl({
+    id,
+    required,
+    disabled,
+    invalid,
+    'aria-describedby': rest['aria-describedby'],
+  });
+  return <input {...rest} {...control} className={cx(input({ size }), className)} />;
+}
 
+export interface TextareaProps extends ComponentPropsWithRef<'textarea'> {
+  invalid?: boolean;
+  /**
+   * Grow with the content up to `maxRows`, where the browser supports CSS
+   * `field-sizing` (Chrome 123, Safari 26.2, Firefox 152). Elsewhere the user can
+   * resize it. Default true.
+   */
+  autoGrow?: boolean;
+  /** Upper bound for auto-grow, in lines. Default 10. */
+  maxRows?: number;
+}
+
+export function Textarea({
+  invalid,
+  autoGrow = true,
+  rows = 3,
+  maxRows = 10,
+  className,
+  style,
+  id,
+  required,
+  disabled,
+  ...rest
+}: TextareaProps) {
+  const control = useFieldControl({
+    id,
+    required,
+    disabled,
+    invalid,
+    'aria-describedby': rest['aria-describedby'],
+  });
   return (
-    <input
+    <textarea
       {...rest}
-      id={id ?? field?.id}
-      required={required ?? field?.required}
-      disabled={disabled ?? field?.disabled}
-      aria-describedby={describedBy}
-      aria-invalid={isInvalid || undefined}
-      className={cx(input({ size }), className)}
+      {...control}
+      rows={rows}
+      data-autogrow={autoGrow || undefined}
+      className={cx(input({ size: 'md' }), textarea, className)}
+      style={{ ...style, ...assignInlineVars({ [maxRowsVar]: String(maxRows) }) }}
     />
   );
 }
