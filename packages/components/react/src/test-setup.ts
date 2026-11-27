@@ -38,3 +38,10 @@ if (!HTMLElement.prototype.showPopover) {
     return matches.call(this, selector);
   };
 }
+
+// jsdom has no ResizeObserver; components only need it to exist.
+globalThis.ResizeObserver ??= class {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+} as unknown as typeof ResizeObserver;

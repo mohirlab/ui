@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { artwork, toDataUri } from '@mohirlab/assets';
 import { iconArrowRight, iconCheck, iconClock, iconPlay, iconStar, iconUsers } from '@mohirlab/icons';
 import {
+  Accordion,
+  AccordionItem,
   Avatar,
   Badge,
   Box,
@@ -300,6 +302,27 @@ export function Academy() {
             ))}
           </Box>
         </div>
+      </section>
+
+      {/* FAQ */}
+      <section className={s.container} style={{ paddingBottom: 64, maxWidth: 760 }}>
+        <Heading level={2} variant="title" marginBottom="5">
+          Questions, answered
+        </Heading>
+        <Accordion type="single">
+          <AccordionItem title="Can I cancel any time?" defaultOpen>
+            Yes. Your plan runs to the end of the period you paid for, then stops.
+          </AccordionItem>
+          <AccordionItem title="Do I keep what I made?">
+            Always. Projects, downloads and certificates stay yours after you cancel.
+          </AccordionItem>
+          <AccordionItem title="Are lessons available offline?">
+            In the app, yes: download any lesson to watch without a connection.
+          </AccordionItem>
+          <AccordionItem title="Is there a student discount?">
+            Half price with a valid student email.
+          </AccordionItem>
+        </Accordion>
       </section>
 
       {/* Newsletter */}

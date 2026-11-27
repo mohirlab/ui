@@ -18,7 +18,10 @@ import {
   Tab,
   TabList,
   TabPanel,
+  Table,
   Tabs,
+  Td,
+  Th,
   Stack,
   Text,
   Tooltip,
@@ -315,6 +318,32 @@ export function Daftar() {
             <Settings />
             <DangerZone />
           </Stack>
+        </Box>
+        <Box marginTop="6">
+          <Table caption="Invoices this month" stickyFirstColumn>
+            <thead>
+              <tr>
+                <Th>Invoice</Th>
+                <Th>Client</Th>
+                <Th>Status</Th>
+                <Th numeric>Amount</Th>
+              </tr>
+            </thead>
+            <tbody>
+              {activity.map((item, i) => (
+                <tr key={item.what}>
+                  <Td style={{ fontWeight: 600 }}>#{2041 + i}</Td>
+                  <Td>{item.who}</Td>
+                  <Td>
+                    <Badge tone={item.tone} seal>
+                      {item.status}
+                    </Badge>
+                  </Td>
+                  <Td numeric>{item.amount}</Td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
         </Box>
       </main>
     </>
