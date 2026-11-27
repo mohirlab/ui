@@ -1,0 +1,50 @@
+{
+  "name": "@mohirlab/tokens",
+  "version": "0.1.0",
+  "description": "Canonical design tokens for the Mohirlab design system, in DTCG format.",
+  "keywords": [
+    "design-system",
+    "mohirlab",
+    "vanilla-extract"
+  ],
+  "homepage": "https://github.com/mohirlab/ui/tree/main/packages/foundation/tokens#readme",
+  "bugs": "https://github.com/mohirlab/ui/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohirlab/ui.git",
+    "directory": "packages/foundation/tokens"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./tokens.json": "./dist/tokens.json",
+    "./source/*": "./src/*"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "vitest run --dir scripts",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\""
+  },
+  "devDependencies": {
+    "vitest": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

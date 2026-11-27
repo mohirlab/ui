@@ -1,0 +1,43 @@
+name: Release
+
+# Publishing uses npm trusted publishing (OIDC). There is no NPM_TOKEN secret:
+# npm is retiring direct publishing with 2FA-bypass tokens (around January 2027),
+# and short-lived OIDC credentials also give every release a provenance attestation.
+#
+# One-time setup per package (first manual publish, then the trusted publisher on npmjs.com):
+# see docs/maintainers.md.
+
+on:
+  push:
+    branches: [main]
+
+concurrency: release-${{ github.ref }}
+
+permissions:
+  contents: write # version commits and tags
+  pull-requests: write # the "Version packages" PR
+  id-token: write # OIDC token for npm trusted publishing
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      # Trusted publishing needs npm 11.5.1 or newer.
+      - run: npm install -g npm@latest
+      - run: pnpm install --frozen-lockfile
+      - name: Open the version PR, or publish once it is merged
+        uses: changesets/action@v1
+        with:
+          version: pnpm version-packages
+          publish: pnpm release
+          title: 'chore: version packages'
+          commit: 'chore: version packages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

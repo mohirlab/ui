@@ -1,0 +1,43 @@
+name: Bug report
+description: Something renders, behaves or builds incorrectly.
+labels: ['type: bug', 'status: triage']
+body:
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package
+      multiple: true
+      options:
+        [
+          '@mohirlab/react',
+          '@mohirlab/themes',
+          '@mohirlab/tokens',
+          '@mohirlab/sprinkles',
+          '@mohirlab/recipes',
+          '@mohirlab/icons',
+          '@mohirlab/assets',
+          'Storybook / docs',
+          'Not sure',
+        ]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      description: A link (StackBlitz, CodeSandbox, a repo) or the smallest code that shows it.
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: '@mohirlab/react 0.1.0, React 19.3, Vite 8, Chrome 140, iOS Safari 19'
+    validations:
+      required: true

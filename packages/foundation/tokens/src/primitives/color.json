@@ -1,0 +1,193 @@
+{
+  "color": {
+    "$type": "color",
+    "paper": {
+      "$value": "oklch(0.993 0.004 85)",
+      "$description": "The sheet. Lightest surface."
+    },
+    "night": {
+      "$value": "oklch(0.165 0.008 70)",
+      "$description": "Deepest dark surface."
+    },
+    "ink": {
+      "50": {
+        "$value": "oklch(0.982 0.003 72)"
+      },
+      "100": {
+        "$value": "oklch(0.952 0.005 72)"
+      },
+      "200": {
+        "$value": "oklch(0.902 0.009 72)"
+      },
+      "300": {
+        "$value": "oklch(0.832 0.012 72)"
+      },
+      "400": {
+        "$value": "oklch(0.735 0.015 72)"
+      },
+      "500": {
+        "$value": "oklch(0.628 0.016 72)"
+      },
+      "600": {
+        "$value": "oklch(0.535 0.016 72)"
+      },
+      "700": {
+        "$value": "oklch(0.452 0.014 72)"
+      },
+      "800": {
+        "$value": "oklch(0.372 0.012 72)"
+      },
+      "900": {
+        "$value": "oklch(0.290 0.009 72)"
+      },
+      "950": {
+        "$value": "oklch(0.215 0.007 72)"
+      },
+      "$description": "Warm graphite neutral. Text, rules and surfaces."
+    },
+    "lapis": {
+      "50": {
+        "$value": "oklch(0.982 0.033 268)"
+      },
+      "100": {
+        "$value": "oklch(0.952 0.059 268)"
+      },
+      "200": {
+        "$value": "oklch(0.902 0.102 268)"
+      },
+      "300": {
+        "$value": "oklch(0.832 0.144 268)"
+      },
+      "400": {
+        "$value": "oklch(0.735 0.176 268)"
+      },
+      "500": {
+        "$value": "oklch(0.628 0.185 268)"
+      },
+      "600": {
+        "$value": "oklch(0.535 0.179 268)"
+      },
+      "700": {
+        "$value": "oklch(0.452 0.163 268)"
+      },
+      "800": {
+        "$value": "oklch(0.372 0.137 268)"
+      },
+      "900": {
+        "$value": "oklch(0.290 0.107 268)"
+      },
+      "950": {
+        "$value": "oklch(0.215 0.078 268)"
+      },
+      "$description": "Lajvard. Ultramarine pigment; the primary accent."
+    },
+    "anor": {
+      "50": {
+        "$value": "oklch(0.982 0.036 22)"
+      },
+      "100": {
+        "$value": "oklch(0.952 0.064 22)"
+      },
+      "200": {
+        "$value": "oklch(0.902 0.11 22)"
+      },
+      "300": {
+        "$value": "oklch(0.832 0.156 22)"
+      },
+      "400": {
+        "$value": "oklch(0.735 0.19 22)"
+      },
+      "500": {
+        "$value": "oklch(0.628 0.2 22)"
+      },
+      "600": {
+        "$value": "oklch(0.535 0.194 22)"
+      },
+      "700": {
+        "$value": "oklch(0.452 0.176 22)"
+      },
+      "800": {
+        "$value": "oklch(0.372 0.148 22)"
+      },
+      "900": {
+        "$value": "oklch(0.290 0.116 22)"
+      },
+      "950": {
+        "$value": "oklch(0.215 0.084 22)"
+      },
+      "$description": "Anor (pomegranate). Destructive and error states."
+    },
+    "jade": {
+      "50": {
+        "$value": "oklch(0.982 0.023 162)"
+      },
+      "100": {
+        "$value": "oklch(0.952 0.042 162)"
+      },
+      "200": {
+        "$value": "oklch(0.902 0.072 162)"
+      },
+      "300": {
+        "$value": "oklch(0.832 0.101 162)"
+      },
+      "400": {
+        "$value": "oklch(0.735 0.123 162)"
+      },
+      "500": {
+        "$value": "oklch(0.628 0.13 162)"
+      },
+      "600": {
+        "$value": "oklch(0.535 0.126 162)"
+      },
+      "700": {
+        "$value": "oklch(0.452 0.114 162)"
+      },
+      "800": {
+        "$value": "oklch(0.372 0.096 162)"
+      },
+      "900": {
+        "$value": "oklch(0.290 0.075 162)"
+      },
+      "950": {
+        "$value": "oklch(0.215 0.055 162)"
+      },
+      "$description": "Success and confirmation."
+    },
+    "saffron": {
+      "50": {
+        "$value": "oklch(0.990 0.03 78)"
+      },
+      "100": {
+        "$value": "oklch(0.990 0.053 78)"
+      },
+      "200": {
+        "$value": "oklch(0.962 0.091 78)"
+      },
+      "300": {
+        "$value": "oklch(0.892 0.129 78)"
+      },
+      "400": {
+        "$value": "oklch(0.795 0.157 78)"
+      },
+      "500": {
+        "$value": "oklch(0.688 0.165 78)"
+      },
+      "600": {
+        "$value": "oklch(0.595 0.16 78)"
+      },
+      "700": {
+        "$value": "oklch(0.512 0.145 78)"
+      },
+      "800": {
+        "$value": "oklch(0.432 0.122 78)"
+      },
+      "900": {
+        "$value": "oklch(0.350 0.096 78)"
+      },
+      "950": {
+        "$value": "oklch(0.275 0.069 78)"
+      },
+      "$description": "Warnings and text selection."
+    }
+  }
+}

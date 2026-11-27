@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# Mohirlab
+
+_Mohir_ (Uzbek) means a master craftsman. The design system follows from that: paper and
+ink neutrals, a lapis accent, controls with a keycap edge, inputs on a ruled line, badges
+set like stamps, and imagery generated from tilework geometry.
+
+## How this showcase is organised
+
+| Section         | What is there                                                                                     |
+| --------------- | ------------------------------------------------------------------------------------------------- |
+| **Foundations** | Color ramps and roles, typography, spacing and radius, elevation, the icon set, generated imagery |
+| **Components**  | Every component with live controls and its full variant grid                                      |
+| **Patterns**    | Real compositions (posts, events, products, courses, invites), mobile-first                       |
+
+Use the toolbar to switch **light / dark** and to preview on **phone** and **tablet** sizes.
+The **Accessibility** panel runs axe on every story.
+
+## Packages
+
+| Package               | Role                                                  |
+| --------------------- | ----------------------------------------------------- |
+| `@mohirlab/tokens`    | DTCG design tokens → JS, types, CSS variables, JSON   |
+| `@mohirlab/themes`    | Theme contract, light and dark themes, cascade layers |
+| `@mohirlab/sprinkles` | Token-bound responsive utilities                      |
+| `@mohirlab/recipes`   | Variant recipes and shared conventions                |
+| `@mohirlab/icons`     | Square-capped line icons as framework-free data       |
+| `@mohirlab/assets`    | Seeded generative artwork and avatars                 |
+| `@mohirlab/react`     | React components                                      |
+
+Everything here imports the **built** packages, exactly as an app installed from npm would.

@@ -1,0 +1,50 @@
+{
+  "$description": "Light mode: paper and ink.",
+  "color": {
+    "$type": "color",
+    "canvas": { "$value": "{color.ink.50}", "$description": "Page background." },
+    "surface": { "$value": "{color.paper}", "$description": "Cards, inputs, sheets." },
+    "surfaceSunken": { "$value": "{color.ink.100}", "$description": "Wells, tracks, code blocks." },
+    "surfaceInverse": { "$value": "{color.ink.900}" },
+    "text": { "$value": "{color.ink.900}" },
+    "textMuted": { "$value": "{color.ink.700}" },
+    "textSubtle": { "$value": "{color.ink.600}" },
+    "textInverse": { "$value": "{color.paper}" },
+    "hairline": { "$value": "{color.ink.200}", "$description": "Quiet 1px dividers." },
+    "border": { "$value": "{color.ink.300}" },
+    "rule": { "$value": "{color.ink.600}", "$description": "The heavier ledger line under inputs." },
+    "accent": { "$value": "{color.lapis.700}" },
+    "accentHover": { "$value": "{color.lapis.800}" },
+    "accentPressed": { "$value": "{color.lapis.900}" },
+    "accentSoft": { "$value": "{color.lapis.100}" },
+    "accentText": { "$value": "{color.lapis.700}" },
+    "onAccent": { "$value": "{color.paper}" },
+    "danger": { "$value": "{color.anor.600}" },
+    "dangerHover": { "$value": "{color.anor.700}" },
+    "dangerSoft": { "$value": "{color.anor.100}" },
+    "dangerText": { "$value": "{color.anor.700}" },
+    "onDanger": { "$value": "{color.paper}" },
+    "success": { "$value": "{color.jade.600}" },
+    "successSoft": { "$value": "{color.jade.100}" },
+    "successText": { "$value": "{color.jade.800}" },
+    "warning": { "$value": "{color.saffron.500}" },
+    "warningSoft": { "$value": "{color.saffron.100}" },
+    "warningText": { "$value": "{color.saffron.900}" },
+    "focus": { "$value": "{color.lapis.600}" },
+    "selection": { "$value": "{color.saffron.200}" }
+  },
+  "shadow": {
+    "$type": "shadow",
+    "$description": "Shadows are warm-tinted, never neutral grey.",
+    "hairline": { "$value": "0 0 0 1px oklch(0.29 0.02 72 / 0.08)" },
+    "raised": { "$value": "0 1px 0 oklch(0.29 0.02 72 / 0.06), 0 2px 5px -2px oklch(0.29 0.03 72 / 0.14)" },
+    "floating": {
+      "$value": "0 1px 0 oklch(0.29 0.02 72 / 0.05), 0 12px 28px -10px oklch(0.29 0.04 72 / 0.28)"
+    },
+    "lip": {
+      "$value": "inset 0 1px 0 oklch(1 0 0 / 0.16), inset 0 -2px 0 oklch(0 0 0 / 0.22)",
+      "$description": "Keycap edge on solid controls."
+    },
+    "lipPressed": { "$value": "inset 0 1px 2px oklch(0 0 0 / 0.25)" }
+  }
+}

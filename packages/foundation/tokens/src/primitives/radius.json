@@ -1,0 +1,13 @@
+{
+  "radius": {
+    "$type": "dimension",
+    "$description": "Tight, deliberate corners. No pills by default.",
+    "none": { "$value": "0" },
+    "xs": { "$value": "3px" },
+    "sm": { "$value": "5px" },
+    "md": { "$value": "7px" },
+    "lg": { "$value": "11px" },
+    "xl": { "$value": "16px" },
+    "round": { "$value": "999px" }
+  }
+}

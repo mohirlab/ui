@@ -1,0 +1,47 @@
+{
+  "name": "@mohirlab/icons",
+  "version": "0.1.0",
+  "description": "Mohirlab icons: square-capped 24px line icons as framework-free data, SVG files and a sprite.",
+  "keywords": [
+    "design-system",
+    "mohirlab",
+    "vanilla-extract"
+  ],
+  "homepage": "https://github.com/mohirlab/ui/tree/main/packages/foundation/icons#readme",
+  "bugs": "https://github.com/mohirlab/ui/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohirlab/ui.git",
+    "directory": "packages/foundation/icons"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./svg/*": "./dist/svg/*",
+    "./sprite.svg": "./dist/sprite.svg",
+    "./icons.json": "./dist/icons.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "vitest run --dir scripts",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\""
+  },
+  "devDependencies": {
+    "vitest": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

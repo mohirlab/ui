@@ -1,0 +1,88 @@
+# Mohirlab
+
+An open-source design system built on [Vanilla Extract](https://vanilla-extract.style), published
+under `@mohirlab`. _Mohir_ is Uzbek for a master craftsman, and the visual language follows
+from that: paper and ink, a lapis accent, keycap controls, ledger-ruled inputs, stamp badges,
+square-capped icons and imagery generated from tilework geometry.
+
+| Package                                             | What it is                                                 |
+| --------------------------------------------------- | ---------------------------------------------------------- |
+| [`@mohirlab/tokens`](packages/foundation/tokens)    | DTCG design tokens → JS, types, CSS variables, JSON        |
+| [`@mohirlab/icons`](packages/foundation/icons)      | Line icons as framework-free data, SVG files and a sprite  |
+| [`@mohirlab/assets`](packages/foundation/assets)    | Seeded generative artwork and avatars in Mohirlab palettes |
+| [`@mohirlab/themes`](packages/foundation/themes)    | Theme contract, light and dark themes, cascade layers      |
+| [`@mohirlab/sprinkles`](packages/styling/sprinkles) | Type-safe, token-bound responsive utilities                |
+| [`@mohirlab/recipes`](packages/styling/recipes)     | Variant recipes and conventions for your own components    |
+| [`@mohirlab/react`](packages/components/react)      | React components                                           |
+
+## Use it
+
+```sh
+pnpm add @mohirlab/react @mohirlab/themes @mohirlab/sprinkles @mohirlab/icons @vanilla-extract/css
+```
+
+```tsx
+import '@mohirlab/themes/styles.css';
+import '@mohirlab/sprinkles/styles.css';
+import '@mohirlab/react/styles.css';
+
+import { iconArrowRight } from '@mohirlab/icons';
+import { Button, Field, Icon, Input, Stack, ThemeScope } from '@mohirlab/react';
+
+export function App() {
+  return (
+    <ThemeScope mode="light">
+      <Stack gap={{ mobile: '3', desktop: '5' }} padding="6">
+        <Field label="Email" hint="We'll send a sign-in link.">
+          <Input type="email" />
+        </Field>
+        <Button end={<Icon icon={iconArrowRight} />}>Continue</Button>
+      </Stack>
+    </ThemeScope>
+  );
+}
+```
+
+Write your own styles against the same tokens in any `.css.ts` file:
+
+```ts
+import { style } from '@vanilla-extract/css';
+import { vars } from '@mohirlab/themes';
+
+export const panel = style({ background: vars.color.surface, borderRadius: vars.radius.lg });
+```
+
+Fonts are not bundled. The tokens ask for Geologica and Martian Mono and fall back to
+system fonts.
+
+## Develop
+
+Requires Node 24 (22 works) and pnpm 12.
+
+```sh
+pnpm install
+pnpm build                               # every package, in dependency order
+pnpm --filter @mohirlab/storybook dev    # the showcase, http://localhost:6006
+pnpm check                               # format, lint, boundaries, types, tests, tarballs
+```
+
+Storybook is organised as **Foundations** (colors, type, spacing, elevation, icons, imagery),
+**Components** (live controls and variant grids) and **Patterns** (real cards, mobile-first).
+The toolbar switches light and dark mode and phone and tablet viewports, and every story
+runs accessibility checks.
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) to get started and [ARCHITECTURE.md](ARCHITECTURE.md) for the
+decisions behind the system.
+
+## Release
+
+1. `pnpm changeset` in the pull request that makes the change.
+2. Merging to `main` opens a "Version packages" pull request.
+3. Merging that publishes to npm from GitHub Actions through trusted publishing (OIDC),
+   with provenance. No npm tokens exist.
+
+Maintainer setup (GitHub account, npm first publish, trusted publishing): [docs/maintainers.md](docs/maintainers.md).
+
+## License
+
+[MIT](LICENSE)

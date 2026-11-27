@@ -1,0 +1,53 @@
+{
+  "name": "@mohirlab/recipes",
+  "version": "0.1.0",
+  "description": "Variant recipes and shared style conventions for building Mohirlab components.",
+  "keywords": [
+    "design-system",
+    "mohirlab",
+    "vanilla-extract"
+  ],
+  "homepage": "https://github.com/mohirlab/ui/tree/main/packages/styling/recipes#readme",
+  "bugs": "https://github.com/mohirlab/ui/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohirlab/ui.git",
+    "directory": "packages/styling/recipes"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\""
+  },
+  "dependencies": {
+    "@mohirlab/themes": "workspace:^",
+    "@vanilla-extract/recipes": "^0.5.7"
+  },
+  "devDependencies": {
+    "@vanilla-extract/css": "^1.21.0"
+  },
+  "peerDependencies": {
+    "@vanilla-extract/css": "^1.21.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
