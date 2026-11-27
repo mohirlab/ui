@@ -1,3 +1,4 @@
+export * from './components/accordion';
 export * from './components/avatar';
 export * from './components/badge';
 export * from './components/box';
@@ -12,6 +13,7 @@ export * from './components/navigation';
 export * from './components/popover';
 export * from './components/select';
 export * from './components/slider';
+export * from './components/table';
 export * from './components/text';
 export * from './components/toast';
 export { ThemeScope, type ThemeScopeProps } from './components/theme-scope/theme-scope';
