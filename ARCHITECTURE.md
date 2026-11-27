@@ -53,6 +53,22 @@ Mobile means mobile web: the same components, touch-first.
 - React Native is out of scope for now. Tokens are framework-free, so a native package can
   consume them later.
 
+## Browser support
+
+Mohirlab builds on platform features instead of JavaScript re-implementations: the
+native `<dialog>` for modals, the Popover API for popovers and tooltips, CSS anchor
+positioning to place them, cascade layers, `color-mix()` and OKLCH colors.
+
+| Browser                | Fully supported from | Notes |
+| ---------------------- | -------------------- | ----- |
+| Chrome / Edge          | 125                  |       |
+| Safari (macOS and iOS) | 26                   |       |
+| Firefox                | 147                  |       |
+
+Below these versions, popovers and tooltips still open, centred on screen instead of next to
+their trigger. Support data comes from @mdn/browser-compat-data. Check it again before raising
+the floor or adopting a new platform feature.
+
 ## Imagery and icons
 
 - No stock photos in packages: licensing for redistribution is unclear and they bloat installs.

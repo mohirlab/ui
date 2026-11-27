@@ -7,6 +7,7 @@ export * from './components/dialog';
 export * from './components/field';
 export * from './components/icon';
 export * from './components/input';
+export * from './components/popover';
 export * from './components/text';
 export * from './components/toast';
 export { ThemeScope, type ThemeScopeProps } from './components/theme-scope/theme-scope';
