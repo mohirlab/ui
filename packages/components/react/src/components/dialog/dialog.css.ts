@@ -1,5 +1,5 @@
-import { createVar, globalStyle, style } from '@vanilla-extract/css';
-import { declareLayers, inLayer, layers, safeArea, vars } from '@mohirlab/themes';
+import { createVar, style } from '@vanilla-extract/css';
+import { declareLayers, inLayer, safeArea, vars } from '@mohirlab/themes';
 import { compose, componentRecipe } from '@mohirlab/recipes';
 import { motion } from '@mohirlab/motion';
 import { mq } from '@mohirlab/sprinkles';
@@ -62,15 +62,6 @@ export const dialog = componentRecipe({
     },
   },
   defaultVariants: { placement: 'auto', size: 'md' },
-});
-
-/**
- * While a modal dialog is open the page behind it must not scroll. Without this, dragging
- * on the backdrop scrolls the page on phones. The scrollbar keeps its space on desktop,
- * so the page does not shift sideways when it disappears.
- */
-globalStyle(`:root:has(.${dialog.classNames.base}:modal)`, {
-  '@layer': { [layers.components]: { overflow: 'hidden', scrollbarGutter: 'stable' } },
 });
 
 export type DialogVariants = NonNullable<RecipeVariants<typeof dialog>>;
