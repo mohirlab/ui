@@ -1,5 +1,5 @@
 import { createVar, style } from '@vanilla-extract/css';
-import { declareLayers, inLayer, vars } from '@mohirlab/themes';
+import { declareLayers, inLayer, safeArea, vars } from '@mohirlab/themes';
 import { compose, componentRecipe } from '@mohirlab/recipes';
 import { motion } from '@mohirlab/motion';
 import { mq } from '@mohirlab/sprinkles';
@@ -25,7 +25,7 @@ const sheet = compose(motion('sheet'), motion('fade', { part: '::backdrop' }), {
   maxHeight: '92dvh',
   borderRadius: `${radius.xl} ${radius.xl} 0 0`,
   // Keep actions clear of the home indicator on phones.
-  paddingBottom: 'env(safe-area-inset-bottom)',
+  paddingBottom: safeArea.bottom,
 });
 
 export const dialog = componentRecipe({

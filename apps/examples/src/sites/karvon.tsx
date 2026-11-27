@@ -19,6 +19,9 @@ import {
 } from '@mohirlab/icons';
 import {
   Avatar,
+  BottomNav,
+  BottomNavItem,
+  BottomNavSpacer,
   AvatarGroup,
   Badge,
   Button,
@@ -313,31 +316,24 @@ export function Karvon() {
           </Card>
         </aside>
       </div>
+      <BottomNavSpacer />
 
-      <nav className={k.bottomNav} aria-label="Sections">
+      <BottomNav aria-label="Sections">
         {nav.map((item) =>
           item.label === 'Meetups' ? (
-            <button
-              key="compose"
-              type="button"
-              className={k.bottomLink}
-              onClick={() => setComposing(true)}
-              style={{ border: 0, background: 'none', fontFamily: 'inherit', cursor: 'pointer' }}
-            >
-              <Icon icon={iconPlus} size={22} /> Post
-            </button>
+            <BottomNavItem key="compose" icon={iconPlus} label="Post" onClick={() => setComposing(true)} />
           ) : (
-            <a
+            <BottomNavItem
               key={item.label}
+              icon={item.icon}
+              label={item.label}
               href="#/karvon"
-              className={k.bottomLink}
-              aria-current={item.current ? 'page' : undefined}
-            >
-              <Icon icon={item.icon} size={22} /> {item.label}
-            </a>
+              current={item.current}
+              badge={item.label === 'Circles' ? 4 : undefined}
+            />
           ),
         )}
-      </nav>
+      </BottomNav>
       <Compose open={composing} onOpenChange={setComposing} />
     </>
   );
