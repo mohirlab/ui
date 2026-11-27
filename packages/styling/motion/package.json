@@ -1,6 +1,6 @@
 {
   "name": "@mohirlab/motion",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Enter and exit motion for Mohirlab: keyframes and data-state presets with reduced-motion fallbacks.",
   "keywords": [
     "design-system",

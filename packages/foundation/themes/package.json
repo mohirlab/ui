@@ -1,6 +1,6 @@
 {
   "name": "@mohirlab/themes",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Theme contract, light and dark themes and cascade layers for Mohirlab.",
   "keywords": [
     "design-system",

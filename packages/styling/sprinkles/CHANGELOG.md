@@ -1,5 +1,13 @@
 # @mohirlab/sprinkles
 
+## 0.1.3
+
+### Patch Changes
+
+- Updated dependencies [f47477e]
+  - @mohirlab/tokens@0.3.0
+  - @mohirlab/themes@0.3.0
+
 ## 0.1.2
 
 ### Patch Changes
