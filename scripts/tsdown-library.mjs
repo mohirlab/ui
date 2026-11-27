@@ -7,11 +7,14 @@ import { vanillaExtractPlugin } from '@vanilla-extract/rollup-plugin';
 
 /**
  * @param {string} packageDir absolute path of the package
- * @param {{ css?: boolean, entry?: string[] }} [options]
+ * @param {{ css?: boolean, entry?: string[], useClient?: boolean }} [options]
  */
 export function libraryConfig(packageDir, options = {}) {
   const pkg = JSON.parse(readFileSync(join(packageDir, 'package.json'), 'utf8'));
   const css = options.css ?? true;
+  // React component packages: every module is a client module for React Server Components
+  // (Next.js App Router). Client components still render on the server for the first paint.
+  const banner = options.useClient ? { js: '"use client";' } : undefined;
 
   return {
     cwd: packageDir,
@@ -46,6 +49,7 @@ export function libraryConfig(packageDir, options = {}) {
           }),
         ]
       : [],
+    banner,
     outputOptions: {
       // Compiled `x.css.ts` must not ship as `x.css.js`: Vanilla Extract bundler
       // plugins treat every `*.css.js` as uncompiled source, even in node_modules.

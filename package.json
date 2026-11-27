@@ -16,7 +16,8 @@
     "format": "oxfmt .",
     "format:check": "oxfmt --check .",
     "check:boundaries": "node scripts/check-boundaries.mjs",
-    "check": "pnpm format:check && pnpm lint && pnpm check:boundaries && pnpm typecheck && pnpm test && pnpm check:exports"
+    "check": "pnpm format:check && pnpm lint && pnpm check:boundaries && pnpm typecheck && pnpm test && pnpm check:exports",
+    "check:consumers": "node scripts/consumer-test.mjs"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.0",
