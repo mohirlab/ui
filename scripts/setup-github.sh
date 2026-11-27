@@ -34,7 +34,8 @@ fi
 # Repository-local credential helper: always push with the mohirlab token from gh.
 git config --local --unset-all credential.https://github.com.helper 2>/dev/null || true
 git config --local --add credential.https://github.com.helper ""
-git config --local --add credential.https://github.com.helper "!f() { test \"$1\" = get || exit 0; echo username=$OWNER; echo \"password=$(gh auth token --hostname github.com --user $OWNER)\"; }; f"
+# Single quotes on purpose: nothing may expand here, or the token itself would be written to git config.
+git config --local --add credential.https://github.com.helper '!f() { test "$1" = get || exit 0; echo username=mohirlab; echo "password=$(gh auth token --hostname github.com --user mohirlab)"; }; f'
 git push -u origin main
 
 gh repo edit "$REPO" \
