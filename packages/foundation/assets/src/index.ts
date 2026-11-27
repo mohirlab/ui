@@ -1,6 +1,6 @@
 export { artwork, artworkKinds, type ArtworkKind, type ArtworkOptions } from './artwork';
 export { avatar, initialsOf, type AvatarOptions } from './avatar';
-export { palettes, paletteNames, type Palette, type PaletteName } from './palettes';
+export { palettes, paletteNames, paletteInk, type Palette, type PaletteName } from './palettes';
 export { createRandom, hashSeed, type Random } from './random';
 
 /** Turn an SVG string into a URL usable in `src`, `background-image` or `<img>`. */
