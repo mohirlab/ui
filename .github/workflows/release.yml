@@ -18,6 +18,9 @@ permissions:
   pull-requests: write # the "Version packages" PR
   id-token: write # OIDC token for npm trusted publishing
 
+env:
+  TURBO_TELEMETRY_DISABLED: 1
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -25,7 +28,7 @@ jobs:
     environment: npm
     steps:
       - uses: actions/checkout@v5
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v7
         with:
           node-version: 24
@@ -35,11 +38,18 @@ jobs:
       - run: npm install -g npm@latest
       - run: pnpm install --frozen-lockfile
       - name: Open the version PR, or publish once it is merged
-        uses: changesets/action@v1
+        id: changesets
+        uses: changesets/action@v2
         with:
-          version: pnpm version-packages
-          publish: pnpm release
-          title: 'chore: version packages'
-          commit: 'chore: version packages'
+          version-script: pnpm version-packages
+          publish-script: pnpm release
+          pr-title: 'chore: version packages'
+          commit-message: 'chore: version packages'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      # A green publish step is not proof: confirm every released version is on npm
+      # with provenance. Retries for registry lag, then fails the run.
+      - name: Verify the release on npm
+        if: steps.changesets.outputs.published == 'true'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISHED: ${{ steps.changesets.outputs.published-packages }}
+        run: node scripts/verify-published.mjs "$PUBLISHED"
