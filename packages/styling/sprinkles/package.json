@@ -1,6 +1,6 @@
 {
   "name": "@mohirlab/sprinkles",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Type-safe, token-bound responsive utility classes for Mohirlab.",
   "keywords": [
     "design-system",

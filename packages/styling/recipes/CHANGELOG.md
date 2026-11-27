@@ -1,5 +1,12 @@
 # @mohirlab/recipes
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies [ef2c0d2]
+  - @mohirlab/themes@0.4.0
+
 ## 0.2.0
 
 ### Minor Changes

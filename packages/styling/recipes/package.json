@@ -1,6 +1,6 @@
 {
   "name": "@mohirlab/recipes",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Variant recipes and shared style conventions for building Mohirlab components.",
   "keywords": [
     "design-system",
