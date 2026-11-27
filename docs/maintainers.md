@@ -80,7 +80,7 @@ Then, for **each** package on npmjs.com (`@mohirlab/tokens`, `icons`, `assets`, 
 | Organization or user | `mohirlab`     |
 | Repository           | `ui`           |
 | Workflow filename    | `release.yml`  |
-| Environment          | (leave empty)  |
+| Environment          | `npm`          |
 
 Still under Settings, set **Publishing access** to "Require two-factor authentication and
 disallow tokens". Trusted publishing keeps working; leaked tokens become useless.
