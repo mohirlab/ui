@@ -1,5 +1,27 @@
 # @mohirlab/react
 
+## 0.2.0
+
+### Minor Changes
+
+- 5ebc147: Overlays and motion.
+
+  - `Dialog` on the native `<dialog>` element: `placement` `auto` (bottom sheet on phones, centered from tablet up), `center` or `sheet`; drag a sheet down to dismiss; `role="alertdialog"` with `dismissible={false}` for decisions; `DialogBody` and `DialogActions`.
+  - `ToastProvider` and `useToast()`: tones, an optional action, pause on hover and focus, polite announcements (danger interrupts), at most three on screen.
+  - Hooks: `usePresence` (keep elements mounted until their exit animation ends) and `useDisclosure`.
+  - New semantic token `color.scrim` (and `vars.color.scrim`) for the backdrop behind modals.
+  - Requires `@mohirlab/motion` and its stylesheet: `import '@mohirlab/motion/styles.css'`.
+
+- 81aa4db: `Popover` and `Tooltip`, built on the native Popover API and CSS anchor positioning: no JavaScript positioning. Popovers light-dismiss, close on Escape and flip at viewport edges; tooltips show on hover (after a delay) and on focus, hide on Escape, and describe their trigger with `aria-describedby`. `placement` takes `top`, `bottom`, `start` and `end`, plus `-start`/`-end` alignments.
+
+### Patch Changes
+
+- Updated dependencies [5ebc147]
+  - @mohirlab/themes@0.2.0
+  - @mohirlab/motion@0.1.1
+  - @mohirlab/sprinkles@0.1.2
+  - @mohirlab/assets@0.1.2
+
 ## 0.1.1
 
 ### Patch Changes
