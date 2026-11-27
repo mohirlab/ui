@@ -57,6 +57,11 @@ jobs:
       - name: Regenerate baselines
         if: ${{ inputs.update }}
         run: pnpm --filter @mohirlab/visual test:visual:update
+      # A screenshot taken once can catch a story mid-flake and turn the flake into the
+      # baseline. Compare everything again: only baselines that reproduce are committed.
+      - name: Check the new baselines reproduce
+        if: ${{ inputs.update }}
+        run: pnpm --filter @mohirlab/visual test:visual
 
       - name: Commit baselines
         if: ${{ inputs.update }}
