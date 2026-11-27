@@ -30,6 +30,9 @@ around either: open an issue instead.
    If you changed something visual on purpose, run the **Visual tests** workflow on your branch
    with _update_ ticked: it regenerates the baselines on Linux and commits them. Never commit
    screenshots made on your own machine, because fonts and rendering differ.
+   Changes to focus, keyboard handling, overlays or the mobile layout also need the parts of
+   [docs/manual-checks.md](docs/manual-checks.md) they touch, with a real screen reader and
+   phone: automated tests cannot hear or hold a device.
 6. Open a pull request that says `Closes #<issue>`.
 
 Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/):

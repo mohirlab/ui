@@ -11,6 +11,15 @@ const { color, radius } = vars;
 const halo = (tone: string) => `0 0 0 3px color-mix(in oklch, ${tone} 20%, transparent)`;
 
 /**
+ * iOS Safari zooms the whole page into a focused field whose text is under 16px, and
+ * leaves it zoomed. On touch screens field text is therefore at least 1rem (16px by
+ * default); mouse and keyboard users keep the tighter size.
+ */
+const noZoom = (size: string) => ({
+  '@media': { '(pointer: coarse)': { fontSize: `max(1rem, ${size})` } },
+});
+
+/**
  * A calm field: hairline border, soft lift, rounded corners. Focus turns the border
  * to the accent and adds a soft halo; invalid does the same in the danger tone.
  */
@@ -51,9 +60,12 @@ export const input = componentRecipe({
   ),
   variants: {
     size: {
-      sm: compose(controlSize.sm, { paddingInline: vars.space['2'], borderRadius: radius.sm }),
-      md: compose(controlSize.md, { paddingInline: vars.space['3'] }),
-      lg: compose(controlSize.lg, { paddingInline: vars.space['4'] }),
+      sm: compose(controlSize.sm, noZoom(vars.font.size.sm), {
+        paddingInline: vars.space['2'],
+        borderRadius: radius.sm,
+      }),
+      md: compose(controlSize.md, noZoom(vars.font.size.md), { paddingInline: vars.space['3'] }),
+      lg: compose(controlSize.lg, noZoom(vars.font.size.lg), { paddingInline: vars.space['4'] }),
     },
   },
   defaultVariants: { size: 'md' },
