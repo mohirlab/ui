@@ -58,17 +58,18 @@ npm login --auth-type=web                                 # sign in as mohirlab 
 npm whoami                                                # prints: mohirlab
 ```
 
-First publish of every package, from the repository root. Provenance can only be generated
-in CI, so it's off for this one manual run:
+First publish of every package, from the repository root:
 
 ```sh
 pnpm install --frozen-lockfile
 pnpm build && pnpm check:exports
-npm_config_provenance=false pnpm -r publish --access public --no-git-checks
+pnpm -r publish --access public --no-git-checks
 ```
 
 `pnpm -r publish` goes in dependency order and rewrites `workspace:^` ranges to real
-versions. npm will ask for your 2FA code.
+versions. npm will ask for your 2FA code. If it stops partway (an expired code, for example),
+run it again: versions already on npm are skipped. Provenance is not set in `publishConfig`;
+npm adds it automatically to every release made through trusted publishing.
 
 Then, for **each** package on npmjs.com (`@mohirlab/tokens`, `icons`, `assets`, `themes`,
 `sprinkles`, `recipes`, `react`), go to Settings › Trusted publishing and add:

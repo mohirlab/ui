@@ -24,6 +24,8 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: pnpm
+      # Same npm as the release job, so packing behaves identically in both.
+      - run: npm install -g npm@latest
       - run: pnpm install --frozen-lockfile
       - run: pnpm format:check
       - run: pnpm lint

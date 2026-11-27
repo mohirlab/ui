@@ -30,8 +30,7 @@
     "./styles.css": "./dist/styles.css"
   },
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "scripts": {
     "build": "tsdown",

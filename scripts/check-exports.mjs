@@ -23,13 +23,15 @@ for (const dir of packageDirs) {
   const pkg = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8'));
   if (pkg.private) continue;
 
-  const [packed] = JSON.parse(
+  const result = JSON.parse(
     execFileSync('npm', ['pack', '--dry-run', '--json', '--ignore-scripts'], {
       cwd: dir,
       encoding: 'utf8',
       shell: true,
     }),
   );
+  // npm 11 prints an array of packages; npm 12 prints an object keyed by package name.
+  const packed = Array.isArray(result) ? result[0] : (result[pkg.name] ?? Object.values(result)[0]);
   const files = new Set(packed.files.map((f) => f.path.replace(/\\/g, '/')));
 
   const missing = [];
