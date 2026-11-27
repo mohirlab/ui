@@ -18,6 +18,9 @@ export default defineConfig({
   expect: {
     toHaveScreenshot: {
       animations: 'disabled',
+      stylePath: './tests/screenshot.css',
+      // WebKit can take a few frames to settle a top-layer dialog.
+      timeout: 15_000,
       caret: 'hide',
       // Anti-aliasing differs slightly between runs; real changes are far larger.
       maxDiffPixelRatio: 0.002,

@@ -1,0 +1,9 @@
+/*
+ * Applied only while a screenshot is taken. WebKit renders backdrop blur slightly
+ * differently from frame to frame, so captures never stabilise; the blur is turned off
+ * for the comparison only.
+ */
+*,
+*::backdrop {
+  backdrop-filter: none !important;
+}
