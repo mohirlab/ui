@@ -1,6 +1,6 @@
 {
   "name": "@mohirlab/assets",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Generative, seed-stable artwork and avatars in Mohirlab palettes. No stock photos, no network.",
   "keywords": [
     "design-system",
