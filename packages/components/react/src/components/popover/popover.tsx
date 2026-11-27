@@ -24,7 +24,7 @@ type TriggerProps = {
 };
 
 /** A unique, CSS-safe anchor name per instance. */
-function useAnchorName() {
+export function useAnchorName() {
   return `--ml-anchor-${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
 }
 

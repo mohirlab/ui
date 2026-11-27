@@ -20,3 +20,4 @@ export {
   type BreadcrumbsProps,
   type Crumb,
 } from './nav';
+export { Pagination, pageRange, type PaginationProps, type PaginationLabels } from './pagination';
