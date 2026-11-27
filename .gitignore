@@ -9,3 +9,5 @@ storybook-static/
 
 # Personal working notes, kept out of the public repository.
 THOUGHT.md
+apps/visual/test-results/
+apps/visual/playwright-report/
