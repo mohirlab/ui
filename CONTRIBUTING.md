@@ -28,7 +28,8 @@ around either: open an issue instead.
    Next.js apps from `fixtures/` and builds them: it catches packaging and SSR problems.
    Visual tests run in CI on every pull request (Chromium, Firefox, WebKit; light and dark).
    If you changed something visual on purpose, run the **Visual tests** workflow on your branch
-   with _update_ ticked: it regenerates the baselines on Linux and commits them. Never commit
+   with _update_ ticked: it regenerates the baselines on Linux, checks that they reproduce and
+   commits them. Look at every changed image in the pull request before merging. Never commit
    screenshots made on your own machine, because fonts and rendering differ.
    Changes to focus, keyboard handling, overlays or the mobile layout also need the parts of
    [docs/manual-checks.md](docs/manual-checks.md) they touch, with a real screen reader and

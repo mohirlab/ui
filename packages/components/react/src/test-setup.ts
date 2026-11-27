@@ -32,6 +32,11 @@ if (!HTMLElement.prototype.showPopover) {
   HTMLElement.prototype.hidePopover = function hidePopover(this: HTMLElement) {
     setPopover.call(this, false);
   };
+  // jsdom's default stylesheet hides [popover] until :popover-open, which it cannot
+  // match, and it does not focus hidden elements. Show the ones opened above.
+  const shown = document.createElement('style');
+  shown.textContent = '[popover][data-popover-open] { display: block; }';
+  document.head.append(shown);
   const matches = Element.prototype.matches;
   Element.prototype.matches = function patchedMatches(this: Element, selector: string) {
     if (selector === ':popover-open') return this.hasAttribute('data-popover-open');
