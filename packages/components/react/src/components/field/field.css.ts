@@ -30,13 +30,10 @@ export const label = style(
   }),
 );
 
-/** "Optional" is set as a small mono tag rather than marking required fields with asterisks. */
+/** "Optional" is a quiet note rather than marking required fields with asterisks. */
 export const optionalTag = style(
   inLayer('components', {
-    fontFamily: vars.font.family.mono,
-    fontSize: '0.6875rem',
-    letterSpacing: vars.font.tracking.label,
-    textTransform: 'uppercase',
+    fontSize: vars.font.size.xs,
     color: vars.color.textSubtle,
   }),
 );

@@ -56,7 +56,7 @@ export function avatar(seed: string | number, options: AvatarOptions = {}): stri
   }
   if (initials) {
     const text = [...initials].slice(0, 2).join('').toLocaleUpperCase();
-    shapes += `<text x="32" y="32" dy=".35em" text-anchor="middle" font-family="Martian Mono, ui-monospace, monospace" font-size="${text.length > 1 ? 22 : 26}" font-weight="500" fill="${ink}">${text.replace(/[&<>]/g, '')}</text>`;
+    shapes += `<text x="32" y="32" dy=".35em" text-anchor="middle" font-family="Geologica, ui-sans-serif, system-ui, sans-serif" font-size="${text.length > 1 ? 23 : 27}" font-weight="600" fill="${ink}">${text.replace(/[&<>]/g, '')}</text>`;
   }
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${s} ${s}" width="${size}" height="${size}" aria-hidden="true">${shapes}</svg>`;
 }

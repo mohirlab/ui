@@ -6,7 +6,7 @@ import {
   controlSize,
   disabled,
   focusRing,
-  keycap,
+  pressable,
   touchTarget,
   transition,
 } from '@mohirlab/recipes';
@@ -85,7 +85,7 @@ export const button = componentRecipe({
       },
     },
     appearance: {
-      solid: compose(keycap, {
+      solid: compose(pressable, {
         backgroundColor: main,
         color: onMain,
         selectors: {
@@ -105,17 +105,16 @@ export const button = componentRecipe({
           },
         },
       },
-      // The ledger edge: a hairline box with a heavier ruled bottom, like the inputs.
+      // A hairline box with a soft lift; the border warms toward the tone on hover.
       outline: {
         backgroundColor: color.surface,
         color: ink,
         borderColor: color.border,
-        borderBottomColor: color.rule,
+        boxShadow: vars.shadow.raised,
         selectors: {
           '&:hover:not(:disabled):not([aria-disabled="true"])': {
-            borderColor: `color-mix(in oklch, ${color.border}, ${main} 45%)`,
-            borderBottomColor: main,
-            backgroundColor: `color-mix(in oklch, ${color.surface}, ${main} 5%)`,
+            borderColor: `color-mix(in oklch, ${color.border}, ${main} 35%)`,
+            backgroundColor: `color-mix(in oklch, ${color.surface}, ${main} 4%)`,
           },
           '&:active:not(:disabled):not([aria-disabled="true"])': {
             backgroundColor: `color-mix(in oklch, ${color.surface}, ${main} 10%)`,

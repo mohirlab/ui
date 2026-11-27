@@ -2,39 +2,79 @@
   "font": {
     "family": {
       "$type": "fontFamily",
-      "sans": { "$value": "\"Geologica\", \"Onest\", ui-sans-serif, system-ui, \"Segoe UI\", sans-serif" },
-      "mono": { "$value": "\"Martian Mono\", \"JetBrains Mono\", ui-monospace, \"Cascadia Code\", monospace" }
+      "sans": {
+        "$value": "\"Geologica\", \"Onest\", ui-sans-serif, system-ui, \"Segoe UI\", sans-serif"
+      },
+      "mono": {
+        "$value": "\"Martian Mono\", \"JetBrains Mono\", ui-monospace, \"Cascadia Code\", monospace"
+      }
     },
     "size": {
       "$type": "dimension",
       "$description": "Minor-third scale anchored at 15px body copy.",
-      "xs": { "$value": "0.75rem" },
-      "sm": { "$value": "0.8125rem" },
-      "md": { "$value": "0.9375rem" },
-      "lg": { "$value": "1.125rem" },
-      "xl": { "$value": "1.375rem" },
-      "2xl": { "$value": "1.75rem" },
-      "3xl": { "$value": "2.25rem" },
-      "4xl": { "$value": "3rem" }
+      "xs": {
+        "$value": "0.75rem"
+      },
+      "sm": {
+        "$value": "0.8125rem"
+      },
+      "md": {
+        "$value": "0.9375rem"
+      },
+      "lg": {
+        "$value": "1.125rem"
+      },
+      "xl": {
+        "$value": "1.375rem"
+      },
+      "2xl": {
+        "$value": "1.75rem"
+      },
+      "3xl": {
+        "$value": "2.25rem"
+      },
+      "4xl": {
+        "$value": "3rem"
+      }
     },
     "weight": {
       "$type": "fontWeight",
-      "regular": { "$value": 400 },
-      "medium": { "$value": 500 },
-      "strong": { "$value": 620 },
-      "heavy": { "$value": 740 }
+      "regular": {
+        "$value": 400
+      },
+      "medium": {
+        "$value": 500
+      },
+      "strong": {
+        "$value": 600
+      },
+      "heavy": {
+        "$value": 680
+      }
     },
     "leading": {
       "$type": "number",
-      "tight": { "$value": 1.15 },
-      "snug": { "$value": 1.35 },
-      "normal": { "$value": 1.55 }
+      "tight": {
+        "$value": 1.15
+      },
+      "snug": {
+        "$value": 1.35
+      },
+      "normal": {
+        "$value": 1.55
+      }
     },
     "tracking": {
       "$type": "dimension",
-      "tight": { "$value": "-0.02em" },
-      "normal": { "$value": "0" },
-      "label": { "$value": "0.06em" }
+      "tight": {
+        "$value": "-0.02em"
+      },
+      "normal": {
+        "$value": "0"
+      },
+      "label": {
+        "$value": "0.08em"
+      }
     }
   }
 }

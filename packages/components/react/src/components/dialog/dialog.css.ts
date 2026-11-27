@@ -67,18 +67,18 @@ export const dialog = componentRecipe({
 export type DialogVariants = NonNullable<RecipeVariants<typeof dialog>>;
 
 /**
- * The grab handle: a double ledger rule instead of the usual pill. Shown on sheets;
+ * The grab handle. Shown on sheets;
  * hidden for centered dialogs (including `auto` from tablet up).
  */
 export const handle = style(
   inLayer('components', {
     display: 'none',
     alignSelf: 'center',
-    width: '2.5rem',
-    height: '6px',
+    width: '2.25rem',
+    height: '5px',
     marginTop: space['3'],
-    borderBlock: `1.5px solid ${color.rule}`,
-    opacity: 0.7,
+    borderRadius: vars.radius.round,
+    backgroundColor: color.border,
     flexShrink: 0,
     selectors: {
       [`.${dialog.classNames.variants.placement.sheet} &`]: { display: 'block' },

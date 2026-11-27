@@ -2,7 +2,7 @@
 
 An open-source design system built on [Vanilla Extract](https://vanilla-extract.style), published
 under `@mohirlab`. _Mohir_ is Uzbek for a master craftsman, and the visual language follows
-from that: paper and ink, a lapis accent, keycap controls, ledger-ruled inputs, stamp badges,
+from that: warm paper and ink, a deep lapis accent, calm surfaces, a square seal that marks state,
 square-capped icons and imagery generated from tilework geometry.
 
 | Package                                             | What it is                                                 |

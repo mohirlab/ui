@@ -37,11 +37,10 @@ export const text = componentRecipe({
       },
       body: { fontSize: font.size.md, lineHeight: font.leading.normal, textWrap: 'pretty' },
       small: { fontSize: font.size.sm, lineHeight: font.leading.snug },
-      /** The workshop label: mono, uppercase, tracked. */
+      /** The eyebrow: small, uppercase, tracked. */
       label: {
-        fontFamily: font.family.mono,
         fontSize: font.size.xs,
-        fontWeight: font.weight.medium,
+        fontWeight: font.weight.strong,
         letterSpacing: font.tracking.label,
         textTransform: 'uppercase',
         lineHeight: font.leading.snug,

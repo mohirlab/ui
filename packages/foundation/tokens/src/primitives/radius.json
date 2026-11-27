@@ -1,13 +1,27 @@
 {
   "radius": {
     "$type": "dimension",
-    "$description": "Tight, deliberate corners. No pills by default.",
-    "none": { "$value": "0" },
-    "xs": { "$value": "3px" },
-    "sm": { "$value": "5px" },
-    "md": { "$value": "7px" },
-    "lg": { "$value": "11px" },
-    "xl": { "$value": "16px" },
-    "round": { "$value": "999px" }
+    "$description": "Soft, modern corners. round is for pills and circles.",
+    "none": {
+      "$value": "0"
+    },
+    "xs": {
+      "$value": "4px"
+    },
+    "sm": {
+      "$value": "8px"
+    },
+    "md": {
+      "$value": "12px"
+    },
+    "lg": {
+      "$value": "16px"
+    },
+    "xl": {
+      "$value": "24px"
+    },
+    "round": {
+      "$value": "999px"
+    }
   }
 }
