@@ -1,10 +1,19 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
+import remarkGfm from 'remark-gfm';
 
 const config: StorybookConfig = {
   framework: '@storybook/react-vite',
   stories: ['../src/**/*.mdx', '../src/**/*.stories.tsx'],
-  addons: ['@storybook/addon-docs', '@storybook/addon-a11y', '@storybook/addon-themes'],
+  addons: [
+    // GitHub-flavoured Markdown in MDX docs: tables, strikethrough, task lists.
+    {
+      name: '@storybook/addon-docs',
+      options: { mdxPluginOptions: { mdxCompileOptions: { remarkPlugins: [remarkGfm] } } },
+    },
+    '@storybook/addon-a11y',
+    '@storybook/addon-themes',
+  ],
   core: { disableTelemetry: true },
   // Stories consume the built packages, exactly like an outside app.
   viteFinal: (vite) => ({

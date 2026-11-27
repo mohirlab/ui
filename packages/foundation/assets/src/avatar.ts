@@ -1,5 +1,13 @@
 import { star } from './artwork';
-import { paletteNames, palettes, resolvePalette, type Palette, type PaletteName } from './palettes';
+import { color } from '@mohirlab/tokens';
+import {
+  paletteInk,
+  paletteNames,
+  palettes,
+  resolvePalette,
+  type Palette,
+  type PaletteName,
+} from './palettes';
 import { createRandom, r2 } from './random';
 
 export interface AvatarOptions {
@@ -26,15 +34,19 @@ export function avatar(seed: string | number, options: AvatarOptions = {}): stri
   const { size = 64, initials } = options;
   // Skip the near-neutral palette when picking automatically: avatars should tell people apart.
   const auto = paletteNames.filter((n) => n !== 'ink');
-  const p = resolvePalette(options.palette, rand.pick(auto) ?? 'lapis') ?? palettes.lapis;
+  const name: PaletteName | undefined =
+    typeof options.palette === 'string' ? options.palette : options.palette ? undefined : rand.pick(auto);
+  const p = name ? palettes[name] : resolvePalette(options.palette, 'lapis');
+  // Custom palettes get the neutral ink for letters.
+  const ink = name ? paletteInk[name] : color.ink[800];
   const s = 64;
   const cx = r2(rand.range(s * 0.25, s * 0.75));
   const cy = r2(rand.range(s * 0.25, s * 0.75));
-  // With initials the letters carry identity, so the tile goes dark and the star
-  // becomes a quiet texture: light text on the darkest tone keeps contrast high.
-  const bg = initials ? p[4] : rand.pick([p[2], p[3]]);
-  const fg = initials ? p[3] : rand.pick([p[0], p[1]]);
-  const accent = initials ? p[2] : p[4];
+  // With initials the letters carry identity: a light tile, the star as a soft texture,
+  // and letters in the palette's deep ink (>= 4.5:1 on tile and star, checked in tests).
+  const bg = initials ? p[1] : rand.pick([p[2], p[3]]);
+  const fg = initials ? p[2] : rand.pick([p[0], p[1]]);
+  const accent = initials ? p[3] : p[4];
   const rotation = rand.pick([0, 22.5, 45]);
 
   let shapes = `<rect width="${s}" height="${s}" fill="${bg}"/>`;
@@ -44,7 +56,7 @@ export function avatar(seed: string | number, options: AvatarOptions = {}): stri
   }
   if (initials) {
     const text = [...initials].slice(0, 2).join('').toLocaleUpperCase();
-    shapes += `<text x="32" y="32" dy=".35em" text-anchor="middle" font-family="Martian Mono, ui-monospace, monospace" font-size="${text.length > 1 ? 22 : 26}" font-weight="500" fill="${p[0]}">${text.replace(/[&<>]/g, '')}</text>`;
+    shapes += `<text x="32" y="32" dy=".35em" text-anchor="middle" font-family="Martian Mono, ui-monospace, monospace" font-size="${text.length > 1 ? 22 : 26}" font-weight="500" fill="${ink}">${text.replace(/[&<>]/g, '')}</text>`;
   }
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${s} ${s}" width="${size}" height="${size}" aria-hidden="true">${shapes}</svg>`;
 }

@@ -9,3 +9,9 @@ allowBuilds:
 permissions:
   tsdown:
     skills: false
+
+# Security: patched versions for transitive dev dependencies (Storybook docgen).
+# GHSA-3g3m-2fjr-6pw4 (glob), GHSA-g3hv-75wg-m249 (minimatch). Remove when upstream catches up.
+overrides:
+  glob@>=9.0.0 <14.0.2: ^14.0.2
+  minimatch@>=7.0.0 <11.0.1: ^11.0.1
