@@ -68,8 +68,11 @@ Requires Node 24 (22 works) and pnpm 12.
 pnpm install
 pnpm build                               # every package, in dependency order
 pnpm --filter @mohirlab/storybook dev    # the showcase, http://localhost:6006
+pnpm --filter @mohirlab/examples dev     # the example websites
 pnpm check                               # format, lint, boundaries, types, tests, tarballs
 ```
+
+**See it live:** [Storybook](https://mohirlab.github.io/ui/) and [example websites](https://mohirlab.github.io/ui/examples/) (a community app, a marketing site and a SaaS dashboard, all built only from Mohirlab).
 
 Storybook is organised as **Foundations** (colors, type, spacing, elevation, icons, imagery),
 **Components** (live controls and variant grids) and **Patterns** (real cards, mobile-first).

@@ -86,7 +86,8 @@ export function star(cx: number, cy: number, r: number) {
 }
 
 function tiles(rand: Random, p: Palette, w: number, h: number) {
-  const size = Math.max(w, h) / rand.int(4, 7);
+  // Enough tiles that the pattern reads as a texture, not a few loud stars.
+  const size = Math.max(w, h) / rand.int(9, 13);
   let body = `<rect width="${w}" height="${h}" fill="${p[3]}"/>`;
   for (let y = 0; y < h + size; y += size) {
     for (let x = 0; x < w + size; x += size) {

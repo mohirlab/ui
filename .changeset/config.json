@@ -7,5 +7,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@mohirlab/playground"]
+  "ignore": ["@mohirlab/playground", "@mohirlab/storybook", "@mohirlab/examples"]
 }
