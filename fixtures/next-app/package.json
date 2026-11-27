@@ -1,0 +1,13 @@
+{
+  "name": "mohirlab-fixture-next",
+  "private": true,
+  "scripts": {
+    "build": "next build"
+  },
+  "dependencies": {
+    "@vanilla-extract/css": "^1.21.0",
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  }
+}

@@ -24,6 +24,8 @@ around either: open an issue instead.
 3. Make the change with tests and a story.
 4. `pnpm changeset`: choose the packages and bump type, and write the line users will read in the changelog.
 5. `pnpm check`: runs formatting, lint, layer boundaries, types, tests and the tarball exports check.
+   `pnpm check:consumers` (also in CI) installs the packed packages into clean Vite and
+   Next.js apps from `fixtures/` and builds them: it catches packaging and SSR problems.
    Visual tests run in CI on every pull request (Chromium, Firefox, WebKit; light and dark).
    If you changed something visual on purpose, run the **Visual tests** workflow on your branch
    with _update_ ticked: it regenerates the baselines on Linux and commits them. Never commit
