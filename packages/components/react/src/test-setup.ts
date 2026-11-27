@@ -16,3 +16,25 @@ window.matchMedia ??= ((query: string) => ({
   addEventListener() {},
   removeEventListener() {},
 })) as unknown as typeof window.matchMedia;
+
+// jsdom has no Popover API either: toggle the :popover-open state with an attribute.
+function setPopover(this: HTMLElement, open: boolean) {
+  if (this.hasAttribute('data-popover-open') === open) return;
+  this.toggleAttribute('data-popover-open', open);
+  const event = new Event('toggle') as Event & { newState: string };
+  Object.assign(event, { newState: open ? 'open' : 'closed' });
+  this.dispatchEvent(event);
+}
+if (!HTMLElement.prototype.showPopover) {
+  HTMLElement.prototype.showPopover = function showPopover(this: HTMLElement) {
+    setPopover.call(this, true);
+  };
+  HTMLElement.prototype.hidePopover = function hidePopover(this: HTMLElement) {
+    setPopover.call(this, false);
+  };
+  const matches = Element.prototype.matches;
+  Element.prototype.matches = function patchedMatches(this: Element, selector: string) {
+    if (selector === ':popover-open') return this.hasAttribute('data-popover-open');
+    return matches.call(this, selector);
+  };
+}

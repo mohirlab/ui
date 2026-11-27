@@ -54,6 +54,9 @@ import { vars } from '@mohirlab/themes';
 export const panel = style({ background: vars.color.surface, borderRadius: vars.radius.lg });
 ```
 
+Supported browsers: Chrome/Edge 125+, Safari 26+ (macOS and iOS), Firefox 147+. See
+[ARCHITECTURE.md](ARCHITECTURE.md#browser-support).
+
 Fonts are not bundled. The tokens ask for Geologica and Martian Mono and fall back to
 system fonts.
 
