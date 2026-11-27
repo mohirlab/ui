@@ -8,10 +8,8 @@ export const layout = style({
   display: 'grid',
   gap: space['6'],
   paddingBlock: space['6'],
-  // Room for the bottom navigation on phones.
-  paddingBottom: `calc(${space['20']} + env(safe-area-inset-bottom))`,
   '@media': {
-    [mq('tablet')]: { gridTemplateColumns: '13rem minmax(0, 1fr)', paddingBottom: space['10'] },
+    [mq('tablet')]: { gridTemplateColumns: '13rem minmax(0, 1fr)' },
     [mq('desktop')]: { gridTemplateColumns: '13rem minmax(0, 1fr) 18rem' },
   },
 });
@@ -82,35 +80,6 @@ export const composerPrompt = style({
   font: 'inherit',
   cursor: 'text',
   selectors: { '&:hover': { color: color.textMuted } },
-});
-
-/** Phone navigation: fixed to the bottom, above the home indicator. */
-export const bottomNav = style({
-  position: 'fixed',
-  insetInline: 0,
-  bottom: 0,
-  zIndex: 10,
-  display: 'grid',
-  gridTemplateColumns: 'repeat(5, 1fr)',
-  paddingBottom: 'env(safe-area-inset-bottom)',
-  backgroundColor: `color-mix(in oklch, ${color.surface} 88%, transparent)`,
-  backdropFilter: 'saturate(1.4) blur(14px)',
-  borderTop: `1px solid ${color.hairline}`,
-  '@media': { [mq('tablet')]: { display: 'none' } },
-});
-
-export const bottomLink = style({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  gap: '0.2rem',
-  minHeight: '3.5rem',
-  justifyContent: 'center',
-  fontSize: '0.6875rem',
-  fontWeight: font.weight.medium,
-  color: color.textSubtle,
-  textDecoration: 'none',
-  selectors: { '&[aria-current="page"]': { color: color.accentText } },
 });
 
 export const actions = style({

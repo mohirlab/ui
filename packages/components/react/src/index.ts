@@ -8,6 +8,7 @@ export * from './components/dialog';
 export * from './components/field';
 export * from './components/icon';
 export * from './components/input';
+export * from './components/navigation';
 export * from './components/popover';
 export * from './components/select';
 export * from './components/slider';

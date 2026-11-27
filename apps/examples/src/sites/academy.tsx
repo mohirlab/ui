@@ -12,6 +12,7 @@ import {
   Heading,
   Icon,
   Input,
+  SegmentedControl,
   Stack,
   Text,
   useToast,
@@ -77,6 +78,7 @@ export function Academy() {
   const [email, setEmail] = useState('');
   const valid = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
   const [tried, setTried] = useState(false);
+  const [period, setPeriod] = useState('month');
 
   return (
     <>
@@ -199,6 +201,16 @@ export function Academy() {
           <Heading level={2} variant="title">
             Pay for depth, not access
           </Heading>
+          <SegmentedControl
+            aria-label="Billing period"
+            value={period}
+            onValueChange={setPeriod}
+            options={[
+              { value: 'month', label: 'Monthly' },
+              { value: 'year', label: 'Yearly · 2 months free' },
+            ]}
+            style={{ marginTop: 12 }}
+          />
         </Stack>
         <Box display="grid" gridTemplateColumns={{ mobile: '1', tablet: '3' }} gap="5" alignItems="stretch">
           {plans.map((plan) => (
@@ -224,7 +236,7 @@ export function Academy() {
                 </Stack>
                 <Stack direction="row" align="baseline" gap="1">
                   <Text variant="display" numeric as="span">
-                    ${plan.price}
+                    ${period === 'year' ? Math.round((plan.price * 10) / 12) : plan.price}
                   </Text>
                   <Text tone="muted" as="span">
                     / month

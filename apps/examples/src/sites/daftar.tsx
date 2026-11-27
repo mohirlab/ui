@@ -15,6 +15,10 @@ import {
   Input,
   Select,
   Switch,
+  Tab,
+  TabList,
+  TabPanel,
+  Tabs,
   Stack,
   Text,
   Tooltip,
@@ -270,29 +274,42 @@ export function Daftar() {
                 View all
               </Button>
             </CardHeader>
-            <Stack gap="4">
-              {activity.map((item) => (
-                <Stack key={item.what} direction="row" gap="3" align="center">
-                  <Avatar name={item.who} size="sm" />
-                  <Stack gap="0" style={{ flex: 1, minWidth: 0 }}>
-                    <Text variant="small" style={{ fontWeight: 600 }}>
-                      {item.who}
-                    </Text>
-                    <Text variant="small" tone="muted">
-                      {item.what}
-                    </Text>
+            <Tabs defaultValue="all">
+              <TabList aria-label="Filter activity">
+                <Tab value="all">All</Tab>
+                <Tab value="paid">Paid</Tab>
+                <Tab value="overdue">Overdue</Tab>
+              </TabList>
+              {(['all', 'paid', 'overdue'] as const).map((view) => (
+                <TabPanel key={view} value={view}>
+                  <Stack gap="4">
+                    {activity
+                      .filter((item) => view === 'all' || item.status.toLowerCase() === view)
+                      .map((item) => (
+                        <Stack key={item.what} direction="row" gap="3" align="center">
+                          <Avatar name={item.who} size="sm" />
+                          <Stack gap="0" style={{ flex: 1, minWidth: 0 }}>
+                            <Text variant="small" style={{ fontWeight: 600 }}>
+                              {item.who}
+                            </Text>
+                            <Text variant="small" tone="muted">
+                              {item.what}
+                            </Text>
+                          </Stack>
+                          <Stack gap="1" align="flex-end">
+                            <Text variant="small" numeric style={{ fontWeight: 600 }}>
+                              {item.amount}
+                            </Text>
+                            <Badge tone={item.tone} seal>
+                              {item.status}
+                            </Badge>
+                          </Stack>
+                        </Stack>
+                      ))}
                   </Stack>
-                  <Stack gap="1" align="flex-end">
-                    <Text variant="small" numeric style={{ fontWeight: 600 }}>
-                      {item.amount}
-                    </Text>
-                    <Badge tone={item.tone} seal>
-                      {item.status}
-                    </Badge>
-                  </Stack>
-                </Stack>
+                </TabPanel>
               ))}
-            </Stack>
+            </Tabs>
           </Card>
           <Stack gap="5">
             <Settings />

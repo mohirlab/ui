@@ -1,5 +1,5 @@
 import { createVar, style } from '@vanilla-extract/css';
-import { declareLayers, inLayer, vars } from '@mohirlab/themes';
+import { declareLayers, inLayer, safeArea, vars } from '@mohirlab/themes';
 import { compose, componentRecipe, focusRing, transition } from '@mohirlab/recipes';
 import { motion } from '@mohirlab/motion';
 import { mq } from '@mohirlab/sprinkles';
@@ -14,7 +14,7 @@ export const region = style(
     position: 'fixed',
     zIndex: 2147483000,
     insetInline: space['4'],
-    bottom: `max(${space['4']}, env(safe-area-inset-bottom))`,
+    bottom: `max(${space['4']}, ${safeArea.bottom})`,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
