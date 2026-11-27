@@ -215,6 +215,9 @@ importers:
 
   apps/playground:
     dependencies:
+      '@mohirlab/motion':
+        specifier: workspace:*
+        version: link:../../packages/styling/motion
       '@mohirlab/react':
         specifier: workspace:*
         version: link:../../packages/components/react
@@ -261,6 +264,9 @@ importers:
       '@mohirlab/icons':
         specifier: workspace:*
         version: link:../../packages/foundation/icons
+      '@mohirlab/motion':
+        specifier: workspace:*
+        version: link:../../packages/styling/motion
       '@mohirlab/react':
         specifier: workspace:*
         version: link:../../packages/components/react
@@ -319,6 +325,9 @@ importers:
       '@mohirlab/icons':
         specifier: workspace:^
         version: link:../../foundation/icons
+      '@mohirlab/motion':
+        specifier: workspace:^
+        version: link:../../styling/motion
       '@mohirlab/sprinkles':
         specifier: workspace:^
         version: link:../../styling/sprinkles
@@ -394,6 +403,16 @@ importers:
       vitest:
         specifier: ^5.1.0
         version: 5.1.2(@types/node@26.6.10)(jsdom@31.0.1)(vite@8.3.8(@types/node@26.6.10)(esbuild@0.28.2)(yaml@2.9.1))
+
+  packages/styling/motion:
+    dependencies:
+      '@mohirlab/themes':
+        specifier: workspace:^
+        version: link:../../foundation/themes
+    devDependencies:
+      '@vanilla-extract/css':
+        specifier: ^1.21.0
+        version: 1.21.3
 
   packages/styling/recipes:
     dependencies:

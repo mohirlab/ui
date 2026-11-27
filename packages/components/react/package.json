@@ -41,6 +41,7 @@
   "dependencies": {
     "@mohirlab/assets": "workspace:^",
     "@mohirlab/icons": "workspace:^",
+    "@mohirlab/motion": "workspace:^",
     "@mohirlab/sprinkles": "workspace:^",
     "@mohirlab/themes": "workspace:^",
     "@vanilla-extract/recipes": "^0.5.7",

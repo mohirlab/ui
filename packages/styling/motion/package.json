@@ -1,0 +1,49 @@
+{
+  "name": "@mohirlab/motion",
+  "version": "0.1.0",
+  "description": "Enter and exit motion for Mohirlab: keyframes and data-state presets with reduced-motion fallbacks.",
+  "keywords": [
+    "design-system",
+    "mohirlab",
+    "vanilla-extract"
+  ],
+  "homepage": "https://github.com/mohirlab/ui/tree/main/packages/styling/motion#readme",
+  "bugs": "https://github.com/mohirlab/ui/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohirlab/ui.git",
+    "directory": "packages/styling/motion"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\""
+  },
+  "dependencies": {
+    "@mohirlab/themes": "workspace:^"
+  },
+  "devDependencies": {
+    "@vanilla-extract/css": "^1.21.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
