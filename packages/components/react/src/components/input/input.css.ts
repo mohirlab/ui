@@ -6,10 +6,12 @@ declareLayers();
 
 const { color, radius } = vars;
 
+/** A soft halo in a tone's color, used for focus and invalid states. */
+const halo = (tone: string) => `0 0 0 3px color-mix(in oklch, ${tone} 20%, transparent)`;
+
 /**
- * The ledger input: a quiet hairline box sitting on a heavier ruled line,
- * with the lower corners squared off where the rule runs. Focus thickens the
- * rule in the accent color and warms the field slightly.
+ * A calm field: hairline border, soft lift, rounded corners. Focus turns the border
+ * to the accent and adds a soft halo; invalid does the same in the danger tone.
  */
 export const input = componentRecipe({
   base: compose(
@@ -23,45 +25,31 @@ export const input = componentRecipe({
       color: color.text,
       backgroundColor: color.surface,
       border: `1px solid ${color.border}`,
-      borderBottom: `2px solid ${color.rule}`,
-      borderRadius: `${radius.md} ${radius.md} ${radius.xs} ${radius.xs}`,
+      borderRadius: radius.md,
+      boxShadow: vars.shadow.raised,
       outline: 'none',
       selectors: {
         '&::placeholder': { color: color.textSubtle, opacity: 1 },
-        '&:hover:not(:disabled):not(:focus)': { borderColor: color.rule },
-        '&:focus': {
-          borderColor: color.border,
-          borderBottomColor: color.accent,
-          backgroundColor: `color-mix(in oklch, ${color.surface}, ${color.accent} 4%)`,
-          boxShadow: `inset 0 -1px 0 ${color.accent}`,
+        '&:hover:not(:disabled):not(:focus)': {
+          borderColor: `color-mix(in oklch, ${color.border}, ${color.text} 18%)`,
         },
-        '&:focus-visible': {
-          boxShadow: `inset 0 -1px 0 ${color.accent}, 0 0 0 3px color-mix(in oklch, transparent, ${color.focus} 22%)`,
-        },
-        '&[aria-invalid="true"]': {
-          borderBottomColor: color.danger,
-          backgroundColor: `color-mix(in oklch, ${color.surface}, ${color.danger} 4%)`,
-        },
-        '&[aria-invalid="true"]:focus': {
-          boxShadow: `inset 0 -1px 0 ${color.danger}`,
-        },
+        '&:focus': { borderColor: color.accent, boxShadow: halo(color.accent) },
+        '&[aria-invalid="true"]': { borderColor: color.danger },
+        '&[aria-invalid="true"]:focus': { boxShadow: halo(color.danger) },
         '&:disabled': {
           cursor: 'not-allowed',
           color: color.textSubtle,
           backgroundColor: color.surfaceSunken,
-          borderBottomStyle: 'dashed',
+          boxShadow: 'none',
         },
-        '&:read-only:not(:disabled)': {
-          backgroundColor: color.surfaceSunken,
-          borderBottomStyle: 'dotted',
-        },
+        '&:read-only:not(:disabled)': { backgroundColor: color.surfaceSunken, boxShadow: 'none' },
       },
     },
     transition('border-color', 'background-color', 'box-shadow'),
   ),
   variants: {
     size: {
-      sm: compose(controlSize.sm, { paddingInline: vars.space['2'] }),
+      sm: compose(controlSize.sm, { paddingInline: vars.space['2'], borderRadius: radius.sm }),
       md: compose(controlSize.md, { paddingInline: vars.space['3'] }),
       lg: compose(controlSize.lg, { paddingInline: vars.space['4'] }),
     },

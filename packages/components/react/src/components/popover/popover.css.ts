@@ -67,16 +67,13 @@ export const popover = componentRecipe({
 
 export type PopoverVariants = NonNullable<RecipeVariants<typeof popover>>;
 
-/** The workshop label: mono, uppercase, tracked, so it reads apart from field labels below it. */
+/** One step larger than field labels, so it reads as the heading above them. */
 export const popoverTitle = style(
   inLayer('components', {
     margin: `0 0 ${space['3']}`,
-    fontFamily: font.family.mono,
-    fontSize: font.size.xs,
-    fontWeight: font.weight.medium,
-    letterSpacing: font.tracking.label,
-    textTransform: 'uppercase',
-    color: color.textSubtle,
+    fontSize: font.size.md,
+    fontWeight: font.weight.strong,
+    letterSpacing: font.tracking.tight,
   }),
 );
 

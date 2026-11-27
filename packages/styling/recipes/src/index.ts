@@ -5,7 +5,7 @@ export {
   controlSize,
   transition,
   focusRing,
-  keycap,
+  pressable,
   disabled,
   srOnly,
   touchTarget,

@@ -70,9 +70,8 @@ export const groupItem = style(
 export const overflow = style(
   inLayer('components', {
     marginInlineStart: vars.space['2'],
-    fontFamily: vars.font.family.mono,
     fontSize: vars.font.size.xs,
-    letterSpacing: vars.font.tracking.label,
+    fontWeight: vars.font.weight.medium,
     color: vars.color.textMuted,
     whiteSpace: 'nowrap',
   }),

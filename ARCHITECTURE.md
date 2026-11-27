@@ -117,18 +117,23 @@ in a layer beat everything, which is the intended override path.
 Mohirlab should not look like shadcn, Material, Chakra, Fluent, Bootstrap or GitHub.
 The decisions that make it distinct:
 
-| Element                    | Decision                                                                                             |
-| -------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Neutrals                   | Warm paper and graphite ink (hue 72), never cool grey or navy. Dark mode is warm charcoal.           |
-| Accent                     | Lapis (lajvard) ultramarine, deep rather than bright SaaS blue.                                      |
-| Status colors              | anor (pomegranate) for danger, jade, saffron. Saffron is also the text selection color.              |
-| Solid controls             | Keycap: lit top edge, darker bottom lip; pressing compresses the lip by 1px.                         |
-| Inputs and outline buttons | Ledger: hairline box with a heavier ruled bottom line and squared lower corners.                     |
-| Badges                     | Stamps: mono, uppercase, tracked, 3px corners, square seal mark. No pills.                           |
-| Errors                     | A rotated square mark next to the text, so error state is not carried by color alone.                |
-| Forms                      | Mark optional fields ("OPTIONAL" tag), not required ones.                                            |
-| Type                       | Geologica (sans, Cyrillic and Latin) and Martian Mono, with system fallbacks. Fonts are not bundled. |
-| Sizes                      | Control heights 30/38/46px, slightly off the usual 32/40/48.                                         |
+| Element        | Decision                                                                                                                            |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Neutrals       | Warm paper and graphite ink (hue 72), never cool grey or navy. Dark mode is warm charcoal.                                          |
+| Accent         | Lapis (lajvard) ultramarine, deep rather than bright SaaS blue.                                                                     |
+| Status colors  | anor (pomegranate) for danger, jade, saffron. Saffron is also the text selection color.                                             |
+| Surfaces       | Flat and calm: hairline edges, soft diffuse warm-tinted shadows, 12/16/24px radii.                                                  |
+| Solid controls | Flat fill with a soft lift; a subtle press-in (scale 0.98) when activated.                                                          |
+| Inputs         | Uniform hairline border; focus turns it lapis with a soft halo.                                                                     |
+| Badges         | Sentence-case soft pills with the square seal.                                                                                      |
+| The seal       | A small square (soft corners) marks tone in badges and toasts, and errors (rotated), so state is not carried by color alone.        |
+| Labels         | Small uppercase sans eyebrows. Mono is for code only.                                                                               |
+| Forms          | Mark optional fields ("Optional"), not required ones.                                                                               |
+| Imagery        | Generated from tilework geometry in light, airy palettes; no near-black.                                                            |
+| Type           | Geologica (sans, Cyrillic and Latin), Martian Mono for code, with system fallbacks. Fonts are not bundled. Weights 400/500/600/680. |
+| Sizes          | Control heights 30/38/46px.                                                                                                         |
+
+History: v0.2 used skeuomorphic "keycap" buttons, ruled "ledger" inputs and mono uppercase "stamp" badges. Feedback was that this read as game UI, so v0.3 kept the identity (palette, seal, imagery) and modernised the surfaces.
 
 ## Component conventions
 

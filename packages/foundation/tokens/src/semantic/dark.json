@@ -103,16 +103,13 @@
       "$value": "0 0 0 1px oklch(1 0 0 / 0.06)"
     },
     "raised": {
-      "$value": "0 1px 0 oklch(1 0 0 / 0.04) inset, 0 2px 6px -2px oklch(0 0 0 / 0.5)"
+      "$value": "0 1px 0 oklch(1 0 0 / 0.04) inset, 0 2px 8px -2px oklch(0 0 0 / 0.45)"
     },
     "floating": {
-      "$value": "0 1px 0 oklch(1 0 0 / 0.05) inset, 0 16px 32px -12px oklch(0 0 0 / 0.7)"
+      "$value": "0 1px 0 oklch(1 0 0 / 0.05) inset, 0 20px 44px -12px oklch(0 0 0 / 0.7)"
     },
-    "lip": {
-      "$value": "inset 0 1px 0 oklch(1 0 0 / 0.18), inset 0 -2px 0 oklch(0 0 0 / 0.35)"
-    },
-    "lipPressed": {
-      "$value": "inset 0 1px 2px oklch(0 0 0 / 0.45)"
+    "control": {
+      "$value": "0 1px 2px oklch(0 0 0 / 0.4)"
     }
   }
 }

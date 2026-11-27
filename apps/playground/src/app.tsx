@@ -34,8 +34,7 @@ function Specimen({ mode }: { mode: ThemeMode }) {
           Made by hand, set in tokens.
         </Heading>
         <Text tone="muted" style={{ maxWidth: '52ch' }}>
-          Paper and ink neutrals, a lapis accent, controls with a keycap edge and inputs that sit on a ruled
-          line.
+          Warm paper and ink, a deep lapis accent, calm surfaces and a square seal that marks line.
         </Text>
       </Stack>
 

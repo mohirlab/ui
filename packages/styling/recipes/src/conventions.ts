@@ -54,18 +54,23 @@ export const focusRing: StyleRule = {
 };
 
 /**
- * The keycap: solid controls carry a lit top edge and a darker bottom lip.
- * Pressing compresses the lip and drops the cap by one pixel.
+ * Solid controls: a soft lift at rest, a slight press-in when activated.
+ * Under reduced motion the press is a shadow change only.
  */
-export const keycap: StyleRule = {
-  boxShadow: vars.shadow.lip,
+export const pressable: StyleRule = {
+  boxShadow: vars.shadow.control,
   selectors: {
     '&:active:not(:disabled):not([aria-disabled="true"])': {
-      boxShadow: vars.shadow.lipPressed,
-      transform: 'translateY(1px)',
+      boxShadow: 'none',
+      transform: 'scale(0.98)',
     },
     '&:focus-visible': {
-      boxShadow: `${vars.shadow.lip}, 0 0 0 2px ${vars.color.canvas}, 0 0 0 4px ${vars.color.focus}`,
+      boxShadow: `${vars.shadow.control}, 0 0 0 2px ${vars.color.canvas}, 0 0 0 4px ${vars.color.focus}`,
+    },
+  },
+  '@media': {
+    '(prefers-reduced-motion: reduce)': {
+      selectors: { '&:active:not(:disabled):not([aria-disabled="true"])': { transform: 'none' } },
     },
   },
 };
